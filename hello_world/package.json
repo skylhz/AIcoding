@@ -1,0 +1,9 @@
+{
+  "name": "hello-ai-coding",
+  "version": "1.0.0",
+  "description": "A simple Node.js frontend page displaying Hello Ai Coding",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
