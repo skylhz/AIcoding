@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10秒倒计时</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            text-align: center;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            color: #a0a0b8;
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+
+        .countdown {
+            font-size: 120px;
+            font-weight: 700;
+            color: #e94560;
+            text-shadow: 0 0 40px rgba(233, 69, 96, 0.4);
+            line-height: 1;
+            margin-bottom: 20px;
+            font-variant-numeric: tabular-nums;
+            transition: color 0.3s;
+        }
+
+        .countdown.warning {
+            color: #f5c518;
+            text-shadow: 0 0 40px rgba(245, 197, 24, 0.4);
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg);
+            margin-bottom: 20px;
+        }
+
+        .progress-ring-circle-bg {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.08);
+            stroke-width: 6;
+        }
+
+        .progress-ring-circle {
+            fill: none;
+            stroke: #e94560;
+            stroke-width: 6;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s linear, stroke 0.3s;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        button {
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            outline: none;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .btn-start {
+            background: #e94560;
+            color: white;
+            box-shadow: 0 4px 20px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn-start:hover {
+            background: #d63851;
+            box-shadow: 0 6px 30px rgba(233, 69, 96, 0.5);
+        }
+
+        .btn-pause {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-pause:hover {
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .btn-reset {
+            background: rgba(255, 255, 255, 0.05);
+            color: #a0a0b8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-reset:hover {
+            background: rgba(255, 255, 255, 0.12);
+            color: #e0e0e0;
+        }
+
+        button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>倒计时</h1>
+
+        <svg class="progress-ring" width="200" height="200" viewBox="0 0 200 200">
+            <circle class="progress-ring-circle-bg" cx="100" cy="100" r="90"></circle>
+            <circle class="progress-ring-circle" id="progressCircle" cx="100" cy="100" r="90"
+                stroke-dasharray="565.49" stroke-dashoffset="0"></circle>
+        </svg>
+
+        <div class="countdown" id="countdownDisplay">10</div>
+
+        <div class="buttons">
+            <button class="btn-start" id="btnStart" onclick="startCountdown()">开始</button>
+            <button class="btn-pause" id="btnPause" onclick="togglePause()" disabled>暂停</button>
+            <button class="btn-reset" id="btnReset" onclick="resetCountdown()">重置</button>
+        </div>
+    </div>
+
+    <script>
+        const TOTAL_SECONDS = 10;
+        const CIRCUMFERENCE = 2 * Math.PI * 90; // ~565.49
+
+        let remainingSeconds = TOTAL_SECONDS;
+        let timerId = null;
+        let isPaused = false;
+
+        const countdownDisplay = document.getElementById('countdownDisplay');
+        const progressCircle = document.getElementById('progressCircle');
+        const btnStart = document.getElementById('btnStart');
+        const btnPause = document.getElementById('btnPause');
+        const btnReset = document.getElementById('btnReset');
+
+        // 初始化圆环
+        progressCircle.style.strokeDasharray = CIRCUMFERENCE;
+        progressCircle.style.strokeDashoffset = '0';
+
+        function updateDisplay() {
+            countdownDisplay.textContent = remainingSeconds;
+
+            // 更新圆环进度
+            const offset = CIRCUMFERENCE * (1 - remainingSeconds / TOTAL_SECONDS);
+            progressCircle.style.strokeDashoffset = offset;
+
+            // 最后3秒变黄色警告
+            if (remainingSeconds <= 3 && remainingSeconds > 0) {
+                countdownDisplay.classList.add('warning');
+                progressCircle.style.stroke = '#f5c518';
+            } else {
+                countdownDisplay.classList.remove('warning');
+                progressCircle.style.stroke = '#e94560';
+            }
+        }
+
+        function playAlarm() {
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            // 播放三声叮叮叮
+            const notes = [800, 1000, 1200]; // Hz
+            const noteDuration = 0.2;  // 每个音符时长
+            const gap = 0.15;          // 音符间隔
+
+            notes.forEach((freq, i) => {
+                const startTime = audioCtx.currentTime + i * (noteDuration + gap);
+                const oscillator = audioCtx.createOscillator();
+                const gainNode = audioCtx.createGain();
+
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(freq, startTime);
+
+                gainNode.gain.setValueAtTime(0, startTime);
+                gainNode.gain.linearRampToValueAtTime(0.5, startTime + 0.02);
+                gainNode.gain.linearRampToValueAtTime(0.3, startTime + 0.05);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, startTime + noteDuration);
+
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+
+                oscillator.start(startTime);
+                oscillator.stop(startTime + noteDuration);
+            });
+        }
+
+        function startCountdown() {
+            if (timerId !== null) return; // 已在运行
+
+            if (remainingSeconds <= 0) {
+                remainingSeconds = TOTAL_SECONDS;
+                updateDisplay();
+            }
+
+            isPaused = false;
+            btnStart.disabled = true;
+            btnPause.disabled = false;
+            btnPause.textContent = '暂停';
+
+            timerId = setInterval(() => {
+                if (remainingSeconds > 0) {
+                    remainingSeconds--;
+                    updateDisplay();
+                }
+
+                if (remainingSeconds <= 0) {
+                    clearInterval(timerId);
+                    timerId = null;
+                    btnStart.disabled = true;
+                    btnPause.disabled = true;
+                    countdownDisplay.textContent = '⏰';
+                    countdownDisplay.classList.remove('warning');
+                    progressCircle.style.strokeDashoffset = CIRCUMFERENCE;
+                    progressCircle.style.stroke = '#e94560';
+                    playAlarm();
+                }
+            }, 1000);
+        }
+
+        function togglePause() {
+            if (timerId === null) return;
+
+            if (isPaused) {
+                // 继续
+                isPaused = false;
+                btnPause.textContent = '暂停';
+                startCountdown();
+            } else {
+                // 暂停
+                isPaused = true;
+                clearInterval(timerId);
+                timerId = null;
+                btnPause.textContent = '继续';
+                btnStart.disabled = true;
+            }
+        }
+
+        function resetCountdown() {
+            if (timerId !== null) {
+                clearInterval(timerId);
+                timerId = null;
+            }
+            remainingSeconds = TOTAL_SECONDS;
+            isPaused = false;
+            btnStart.disabled = false;
+            btnPause.disabled = true;
+            btnPause.textContent = '暂停';
+            updateDisplay();
+            countdownDisplay.classList.remove('warning');
+            progressCircle.style.strokeDashoffset = '0';
+            progressCircle.style.stroke = '#e94560';
+        }
+
+        // 初始状态渲染
+        updateDisplay();
+    </script>
+</body>
+</html>
