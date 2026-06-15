@@ -98,6 +98,12 @@ export async function checkout(formData: FormData) {
     throw new ActionError("请填写收货地址和联系电话");
   }
 
+  // 校验手机号格式
+  const phoneRegex = /^1[3-9]\d{9}$/;
+  if (!phoneRegex.test(phone)) {
+    throw new ActionError("请输入正确的手机号码");
+  }
+
   // 获取购物车所有商品（含完整商品信息用于库存校验）
   const cartItems = await prisma.cartItem.findMany({
     where: { userId: session.userId },

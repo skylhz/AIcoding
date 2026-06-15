@@ -69,7 +69,9 @@ export default async function CheckoutPage() {
                     name="phone"
                     type="tel"
                     required
-                    placeholder="请输入联系电话"
+                    pattern="^1[3-9]\d{9}$"
+                    placeholder="请输入11位手机号码"
+                    title="请输入正确的手机号码"
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
                   />
                 </div>
