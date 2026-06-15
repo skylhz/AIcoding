@@ -114,13 +114,6 @@ export async function checkout(formData: FormData) {
     throw new ActionError("购物车为空");
   }
 
-  // 校验库存
-  for (const item of cartItems) {
-    if (item.product.stock < item.quantity) {
-      throw new ActionError(`"${item.product.name}" 库存不足，当前库存 ${item.product.stock} 件`);
-    }
-  }
-
   const total = calculateTotal(
     cartItems.map((item) => ({
       price: item.product.price,
@@ -128,8 +121,22 @@ export async function checkout(formData: FormData) {
     }))
   );
 
-  // 事务：扣减库存 + 创建订单 + 清空购物车
+  // 事务：校验库存 + 扣减库存 + 创建订单 + 清空购物车
+  // 库存校验必须在事务内进行，防止 TOCTOU 竞态导致超卖
   const order = await prisma.$transaction(async (tx) => {
+    // 事务内校验库存（利用行级锁保证原子性）
+    for (const item of cartItems) {
+      const product = await tx.product.findUnique({
+        where: { id: item.productId },
+        select: { name: true, stock: true },
+      });
+      if (!product || product.stock < item.quantity) {
+        throw new ActionError(
+          `"${product?.name || item.productId}" 库存不足`
+        );
+      }
+    }
+
     // 扣减商品库存
     for (const item of cartItems) {
       await tx.product.update({
