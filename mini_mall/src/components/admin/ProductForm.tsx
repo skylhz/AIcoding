@@ -43,7 +43,7 @@ export default function ProductForm({
       name: form.get("name"),
       slug: form.get("slug"),
       description: form.get("description"),
-      price: parseInt(form.get("price") as string, 10),
+      price: Math.round(parseFloat(form.get("price") as string) * 100),
       stock: parseInt(form.get("stock") as string, 10),
       images: form.get("images") || "[]",
       isFeatured: form.get("isFeatured") === "on",
@@ -99,8 +99,16 @@ export default function ProductForm({
 
       <div className="grid grid-cols-3 gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">价格（分）*</label>
-          <input name="price" type="number" defaultValue={initialData?.price} required className="w-full px-3 py-2 border rounded-lg text-sm" />
+          <label className="block text-sm font-medium text-gray-700 mb-1">价格（元）*</label>
+          <input
+            name="price"
+            type="number"
+            step="0.01"
+            min="0"
+            defaultValue={initialData?.price != null ? initialData.price / 100 : ""}
+            required
+            className="w-full px-3 py-2 border rounded-lg text-sm"
+          />
           {initialData?.price != null && (
             <p className="text-xs text-gray-400 mt-1">当前：¥{formatPrice(initialData.price)}</p>
           )}

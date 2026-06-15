@@ -36,6 +36,10 @@ export async function proxy(request: NextRequest) {
   }
 
   try {
+    // AUTH_SECRET 缺失时无法验证 token，拒绝访问
+    if (!process.env.AUTH_SECRET) {
+      return NextResponse.redirect(new URL("/login", request.url));
+    }
     const secret = new TextEncoder().encode(process.env.AUTH_SECRET);
     const { payload } = await jwtVerify(token, secret);
     const role = payload.role as string;

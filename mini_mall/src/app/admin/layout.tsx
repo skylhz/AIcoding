@@ -23,7 +23,7 @@ export default async function AdminLayout({
   return (
     <div className="min-h-screen bg-gray-50 flex">
       {/* 侧边栏 */}
-      <aside className="w-56 bg-white border-r border-gray-200 flex-shrink-0">
+      <aside className="w-56 bg-white border-r border-gray-200 flex-shrink-0 relative">
         <div className="p-4 border-b border-gray-100">
           <Link href="/" className="text-lg font-bold text-blue-600">
             Mini Mall
