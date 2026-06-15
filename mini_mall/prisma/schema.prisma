@@ -35,7 +35,7 @@ model Product {
   name        String
   slug        String      @unique
   description String
-  price       Float
+  price       Int         // 单位：分（避免浮点精度问题）
   stock       Int         @default(0)
   images      String      @default("[]")
   isFeatured  Boolean     @default(false)
@@ -64,7 +64,7 @@ model Order {
   id        Int         @id @default(autoincrement())
   userId    Int
   status    String      @default("PENDING")
-  total     Float
+  total     Int         // 单位：分
   address   String
   phone     String
   note      String?
@@ -79,7 +79,7 @@ model OrderItem {
   orderId     Int
   productId   Int
   productName String
-  price       Float
+  price       Int      // 单位：分（下单时快照）
   quantity    Int
   createdAt   DateTime @default(now())
   order       Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)

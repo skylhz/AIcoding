@@ -89,7 +89,7 @@ async function main() {
       name: "无线蓝牙耳机 Pro",
       slug: "wireless-bluetooth-earphones-pro",
       description: "高品质无线蓝牙耳机，支持主动降噪，续航长达30小时，佩戴舒适。采用最新的蓝牙5.3技术，连接稳定，音质出色。",
-      price: 299.0,
+      price: 29900,
       stock: 120,
       images: JSON.stringify([
         "https://placehold.co/600x600/3b82f6/ffffff?text=耳机-1",
@@ -102,7 +102,7 @@ async function main() {
       name: "轻薄笔记本电脑 14寸",
       slug: "thin-light-laptop-14",
       description: "14寸轻薄笔记本，搭载最新处理器，16GB内存，512GB固态硬盘，持续办公10小时以上。",
-      price: 4999.0,
+      price: 499900,
       stock: 45,
       images: JSON.stringify([
         "https://placehold.co/600x600/3b82f6/ffffff?text=笔记本-1",
@@ -115,7 +115,7 @@ async function main() {
       name: "智能手表运动版",
       slug: "smart-watch-sport-edition",
       description: "多功能智能手表，支持心率监测、血氧检测、GPS定位、50米防水，14天超长续航。",
-      price: 899.0,
+      price: 89900,
       stock: 78,
       images: JSON.stringify([
         "https://placehold.co/600x600/3b82f6/ffffff?text=手表-1",
@@ -127,7 +127,7 @@ async function main() {
       name: "机械键盘 RGB青轴",
       slug: "mechanical-keyboard-rgb-blue",
       description: "87键RGB机械键盘，青轴手感，支持热插拔，全键无冲突，Type-C可拆卸连接线。",
-      price: 259.0,
+      price: 25900,
       stock: 200,
       images: JSON.stringify([
         "https://placehold.co/600x600/3b82f6/ffffff?text=键盘-1",
@@ -139,7 +139,7 @@ async function main() {
       name: "便携蓝牙音箱",
       slug: "portable-bluetooth-speaker",
       description: "IPX7防水便携蓝牙音箱，360°环绕立体声，20小时续航，适合户外使用。",
-      price: 199.0,
+      price: 19900,
       stock: 150,
       images: JSON.stringify([
         "https://placehold.co/600x600/3b82f6/ffffff?text=音箱-1",
@@ -152,7 +152,7 @@ async function main() {
       name: "纯棉休闲T恤 男女款",
       slug: "cotton-casual-tshirt",
       description: "100%纯棉面料，亲肤透气，多色可选，简约百搭款式，适合日常穿搭。",
-      price: 79.0,
+      price: 7900,
       stock: 500,
       images: JSON.stringify([
         "https://placehold.co/600x600/ec4899/ffffff?text=T恤-1",
@@ -164,7 +164,7 @@ async function main() {
       name: "复古牛仔夹克",
       slug: "vintage-denim-jacket",
       description: "经典复古牛仔夹克，纯棉牛仔面料，做旧工艺，男女同款，春秋必备单品。",
-      price: 359.0,
+      price: 35900,
       stock: 88,
       images: JSON.stringify([
         "https://placehold.co/600x600/ec4899/ffffff?text=牛仔-1",
@@ -176,7 +176,7 @@ async function main() {
       name: "真皮双肩背包",
       slug: "leather-backpack",
       description: "头层牛皮双肩背包，大容量设计，可放15.6寸笔记本，商务出行首选。",
-      price: 459.0,
+      price: 45900,
       stock: 60,
       images: JSON.stringify([
         "https://placehold.co/600x600/ec4899/ffffff?text=背包-1",
@@ -188,7 +188,7 @@ async function main() {
       name: "运动跑鞋 轻量款",
       slug: "running-shoes-lightweight",
       description: "超轻量运动跑鞋，飞织鞋面，缓震中底，透气舒适，适合日常跑步和健身。",
-      price: 399.0,
+      price: 39900,
       stock: 130,
       images: JSON.stringify([
         "https://placehold.co/600x600/ec4899/ffffff?text=跑鞋-1",
@@ -201,7 +201,7 @@ async function main() {
       name: "北欧风落地灯",
       slug: "nordic-floor-lamp",
       description: "简约北欧风格落地灯，三档色温调节，护眼柔光，遥控操作，客厅书房皆宜。",
-      price: 289.0,
+      price: 28900,
       stock: 35,
       images: JSON.stringify([
         "https://placehold.co/600x600/f59e0b/ffffff?text=落地灯-1",
@@ -213,7 +213,7 @@ async function main() {
       name: "乳胶记忆枕 护颈款",
       slug: "latex-memory-pillow",
       description: "天然乳胶记忆枕，人体工学设计，缓解颈椎压力，透气防螨，改善睡眠质量。",
-      price: 159.0,
+      price: 15900,
       stock: 220,
       images: JSON.stringify([
         "https://placehold.co/600x600/f59e0b/ffffff?text=枕头-1",
@@ -225,7 +225,7 @@ async function main() {
       name: "双层保温玻璃杯",
       slug: "double-wall-glass-cup",
       description: "高硼硅玻璃双层保温杯，茶水分离设计，防漏防烫，办公家用两相宜。",
-      price: 49.0,
+      price: 4900,
       stock: 300,
       images: JSON.stringify([
         "https://placehold.co/600x600/f59e0b/ffffff?text=水杯-1",
@@ -238,7 +238,7 @@ async function main() {
       name: "瑜伽垫加厚防滑款",
       slug: "yoga-mat-thick-non-slip",
       description: "6mm加厚瑜伽垫，双面防滑纹理，环保TPE材质，附带收纳绑带。",
-      price: 89.0,
+      price: 8900,
       stock: 180,
       images: JSON.stringify([
         "https://placehold.co/600x600/10b981/ffffff?text=瑜伽垫-1",
@@ -250,7 +250,7 @@ async function main() {
       name: "户外野营帐篷 双人款",
       slug: "outdoor-camping-tent-2person",
       description: "双人户外野营帐篷，防风防雨，速开设计，通风透气，适合登山露营。",
-      price: 599.0,
+      price: 59900,
       stock: 25,
       images: JSON.stringify([
         "https://placehold.co/600x600/10b981/ffffff?text=帐篷-1",
@@ -262,7 +262,7 @@ async function main() {
       name: "可调节哑铃套装",
       slug: "adjustable-dumbbell-set",
       description: "快调哑铃套装，5-25kg可调节，节省空间，包胶轮静音防滑，家庭健身首选。",
-      price: 699.0,
+      price: 69900,
       stock: 40,
       images: JSON.stringify([
         "https://placehold.co/600x600/10b981/ffffff?text=哑铃-1",
@@ -275,7 +275,7 @@ async function main() {
       name: "JavaScript高级程序设计（第4版）",
       slug: "javascript-advanced-programming-4th",
       description: "前端开发必读经典，全面覆盖ES2020新特性，深入讲解JavaScript核心概念与高级技术。",
-      price: 129.0,
+      price: 12900,
       stock: 500,
       images: JSON.stringify([
         "https://placehold.co/600x600/8b5cf6/ffffff?text=JS高级-1",
@@ -287,7 +287,7 @@ async function main() {
       name: "全新思维：设计主导的未来",
       slug: "a-whole-new-mind",
       description: "畅销商业思维图书，探讨右脑思维在人工智能时代的重要性与价值。",
-      price: 59.0,
+      price: 5900,
       stock: 320,
       images: JSON.stringify([
         "https://placehold.co/600x600/8b5cf6/ffffff?text=思维-1",
@@ -299,7 +299,7 @@ async function main() {
       name: "精美手账笔记本",
       slug: "beautiful-notebook-journal",
       description: "A5尺寸精美手账笔记本，192页网格内芯，PU皮封面，平摊设计，书写舒心。",
-      price: 39.0,
+      price: 3900,
       stock: 450,
       images: JSON.stringify([
         "https://placehold.co/600x600/8b5cf6/ffffff?text=手账-1",

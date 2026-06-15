@@ -1,15 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
-
-/** 安全解析商品图片 JSON 字符串 */
-function parseImages(raw: string): string[] {
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-}
+import { parseImages, formatPrice } from "@/lib/utils";
+import AddToCartButton from "@/components/cart/AddToCartButton";
 
 /** 商品详情页：大图 + 名称/价格/描述/库存 + 加入购物车按钮 */
 export default async function ProductDetailPage({
@@ -111,7 +104,7 @@ export default async function ProductDetailPage({
               {/* 价格 */}
               <div className="mt-6 bg-red-50 rounded-lg p-4">
                 <span className="text-3xl font-bold text-red-600">
-                  ¥{product.price.toFixed(2)}
+                  ¥{formatPrice(product.price)}
                 </span>
               </div>
 
@@ -141,12 +134,10 @@ export default async function ProductDetailPage({
 
               {/* 操作按钮 */}
               <div className="mt-auto pt-8 flex gap-3">
-                <button
+                <AddToCartButton
+                  productId={product.id}
                   disabled={product.stock === 0}
-                  className="flex-1 px-8 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-                >
-                  加入购物车
-                </button>
+                />
                 <Link
                   href="/"
                   className="px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-colors"

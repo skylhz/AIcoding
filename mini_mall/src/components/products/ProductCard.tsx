@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { parseImages, formatPrice } from "@/lib/utils";
 
 /** 商品数据类型 */
 interface ProductCardProps {
@@ -14,15 +15,6 @@ interface ProductCardProps {
  * 商品卡片组件
  * 展示商品缩略图、名称、价格和分类标签
  */
-/** 安全解析商品图片 JSON 字符串 */
-function parseImages(raw: string): string[] {
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-}
-
 export default function ProductCard({ product }: { product: ProductCardProps }) {
   const images = parseImages(product.images);
 
@@ -55,7 +47,7 @@ export default function ProductCard({ product }: { product: ProductCardProps }) 
           {product.name}
         </h3>
         <p className="mt-2 text-lg font-bold text-red-600">
-          ¥{product.price.toFixed(2)}
+          ¥{formatPrice(product.price)}
         </p>
       </div>
     </Link>
