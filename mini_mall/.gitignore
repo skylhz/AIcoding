@@ -39,6 +39,9 @@ prisma/dev.db-journal
 *.db
 *.db-journal
 
+# local settings
+.claude/settings.local.json
+
 # vercel
 .vercel
 
