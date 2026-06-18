@@ -43,7 +43,7 @@ async function main() {
         name: "电子数码",
         slug: "electronics",
         description: "手机、电脑、配件等电子产品",
-        image: "https://placehold.co/200x200/3b82f6/ffffff?text=数码",
+        image: "https://loremflickr.com/200/200/electronics,gadget",
       },
     }),
     prisma.category.create({
@@ -51,7 +51,7 @@ async function main() {
         name: "服饰鞋包",
         slug: "fashion",
         description: "服装、鞋靴、箱包配饰",
-        image: "https://placehold.co/200x200/ec4899/ffffff?text=服饰",
+        image: "https://loremflickr.com/200/200/clothing,fashion",
       },
     }),
     prisma.category.create({
@@ -59,7 +59,7 @@ async function main() {
         name: "家居家装",
         slug: "home",
         description: "家具、家居用品、装饰",
-        image: "https://placehold.co/200x200/f59e0b/ffffff?text=家居",
+        image: "https://loremflickr.com/200/200/furniture,home",
       },
     }),
     prisma.category.create({
@@ -67,7 +67,7 @@ async function main() {
         name: "运动户外",
         slug: "sports",
         description: "运动器材、户外装备",
-        image: "https://placehold.co/200x200/10b981/ffffff?text=运动",
+        image: "https://loremflickr.com/200/200/sports,outdoor",
       },
     }),
     prisma.category.create({
@@ -75,7 +75,7 @@ async function main() {
         name: "图书文娱",
         slug: "books",
         description: "图书、文具、影音",
-        image: "https://placehold.co/200x200/8b5cf6/ffffff?text=图书",
+        image: "https://loremflickr.com/200/200/books,stationery",
       },
     }),
   ]);
@@ -92,8 +92,8 @@ async function main() {
       price: 29900,
       stock: 120,
       images: JSON.stringify([
-        "https://placehold.co/600x600/3b82f6/ffffff?text=耳机-1",
-        "https://placehold.co/600x600/3b82f6/ffffff?text=耳机-2",
+        "https://loremflickr.com/600/600/earbuds,wireless",
+        "https://loremflickr.com/600/600/headphones,bluetooth",
       ]),
       isFeatured: true,
       categorySlug: "electronics",
@@ -105,8 +105,8 @@ async function main() {
       price: 499900,
       stock: 45,
       images: JSON.stringify([
-        "https://placehold.co/600x600/3b82f6/ffffff?text=笔记本-1",
-        "https://placehold.co/600x600/3b82f6/ffffff?text=笔记本-2",
+        "https://loremflickr.com/600/600/laptop,ultrathin",
+        "https://loremflickr.com/600/600/laptop,computer",
       ]),
       isFeatured: true,
       categorySlug: "electronics",
@@ -118,7 +118,7 @@ async function main() {
       price: 89900,
       stock: 78,
       images: JSON.stringify([
-        "https://placehold.co/600x600/3b82f6/ffffff?text=手表-1",
+        "https://loremflickr.com/600/600/smartwatch,fitness",
       ]),
       isFeatured: false,
       categorySlug: "electronics",
@@ -130,7 +130,7 @@ async function main() {
       price: 25900,
       stock: 200,
       images: JSON.stringify([
-        "https://placehold.co/600x600/3b82f6/ffffff?text=键盘-1",
+        "https://loremflickr.com/600/600/keyboard,mechanical",
       ]),
       isFeatured: false,
       categorySlug: "electronics",
@@ -142,7 +142,7 @@ async function main() {
       price: 19900,
       stock: 150,
       images: JSON.stringify([
-        "https://placehold.co/600x600/3b82f6/ffffff?text=音箱-1",
+        "https://loremflickr.com/600/600/speaker,bluetooth",
       ]),
       isFeatured: true,
       categorySlug: "electronics",
@@ -155,7 +155,7 @@ async function main() {
       price: 7900,
       stock: 500,
       images: JSON.stringify([
-        "https://placehold.co/600x600/ec4899/ffffff?text=T恤-1",
+        "https://loremflickr.com/600/600/tshirt,cotton",
       ]),
       isFeatured: false,
       categorySlug: "fashion",
@@ -167,7 +167,7 @@ async function main() {
       price: 35900,
       stock: 88,
       images: JSON.stringify([
-        "https://placehold.co/600x600/ec4899/ffffff?text=牛仔-1",
+        "https://loremflickr.com/600/600/denim,jacket",
       ]),
       isFeatured: false,
       categorySlug: "fashion",
@@ -179,7 +179,7 @@ async function main() {
       price: 45900,
       stock: 60,
       images: JSON.stringify([
-        "https://placehold.co/600x600/ec4899/ffffff?text=背包-1",
+        "https://loremflickr.com/600/600/leather,backpack",
       ]),
       isFeatured: true,
       categorySlug: "fashion",
@@ -191,7 +191,7 @@ async function main() {
       price: 39900,
       stock: 130,
       images: JSON.stringify([
-        "https://placehold.co/600x600/ec4899/ffffff?text=跑鞋-1",
+        "https://loremflickr.com/600/600/sneakers,running",
       ]),
       isFeatured: false,
       categorySlug: "fashion",
@@ -204,7 +204,7 @@ async function main() {
       price: 28900,
       stock: 35,
       images: JSON.stringify([
-        "https://placehold.co/600x600/f59e0b/ffffff?text=落地灯-1",
+        "https://loremflickr.com/600/600/floor,lamp",
       ]),
       isFeatured: false,
       categorySlug: "home",
@@ -216,7 +216,7 @@ async function main() {
       price: 15900,
       stock: 220,
       images: JSON.stringify([
-        "https://placehold.co/600x600/f59e0b/ffffff?text=枕头-1",
+        "https://loremflickr.com/600/600/pillow,bedding",
       ]),
       isFeatured: false,
       categorySlug: "home",
@@ -228,7 +228,7 @@ async function main() {
       price: 4900,
       stock: 300,
       images: JSON.stringify([
-        "https://placehold.co/600x600/f59e0b/ffffff?text=水杯-1",
+        "https://loremflickr.com/600/600/glass,tea",
       ]),
       isFeatured: false,
       categorySlug: "home",
@@ -241,7 +241,7 @@ async function main() {
       price: 8900,
       stock: 180,
       images: JSON.stringify([
-        "https://placehold.co/600x600/10b981/ffffff?text=瑜伽垫-1",
+        "https://loremflickr.com/600/600/yoga,mat",
       ]),
       isFeatured: false,
       categorySlug: "sports",
@@ -253,7 +253,7 @@ async function main() {
       price: 59900,
       stock: 25,
       images: JSON.stringify([
-        "https://placehold.co/600x600/10b981/ffffff?text=帐篷-1",
+        "https://loremflickr.com/600/600/camping,tent",
       ]),
       isFeatured: false,
       categorySlug: "sports",
@@ -265,7 +265,7 @@ async function main() {
       price: 69900,
       stock: 40,
       images: JSON.stringify([
-        "https://placehold.co/600x600/10b981/ffffff?text=哑铃-1",
+        "https://loremflickr.com/600/600/dumbbell,gym",
       ]),
       isFeatured: false,
       categorySlug: "sports",
@@ -278,7 +278,7 @@ async function main() {
       price: 12900,
       stock: 500,
       images: JSON.stringify([
-        "https://placehold.co/600x600/8b5cf6/ffffff?text=JS高级-1",
+        "https://loremflickr.com/600/600/programming,book",
       ]),
       isFeatured: false,
       categorySlug: "books",
@@ -290,7 +290,7 @@ async function main() {
       price: 5900,
       stock: 320,
       images: JSON.stringify([
-        "https://placehold.co/600x600/8b5cf6/ffffff?text=思维-1",
+        "https://loremflickr.com/600/600/book,design",
       ]),
       isFeatured: false,
       categorySlug: "books",
@@ -302,7 +302,7 @@ async function main() {
       price: 3900,
       stock: 450,
       images: JSON.stringify([
-        "https://placehold.co/600x600/8b5cf6/ffffff?text=手账-1",
+        "https://loremflickr.com/600/600/notebook,journal",
       ]),
       isFeatured: false,
       categorySlug: "books",
